@@ -1,0 +1,111 @@
+* {
+    font-family: "Quicksand", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 0.9rem;
+}
+
+body,
+html {
+    font-size: 0.9rem;
+    color: $font-color;
+    background: $primary-background;
+    //min-width: 1200px;
+    min-height: 100vh;
+    position: relative;
+}
+
+::-moz-selection {
+    color: #fff;
+    background: $font-color;
+    border-radius: 2px;
+}
+
+::selection {
+    color: #fff;
+    background: $font-color;
+    border-radius: 2px;
+}
+
+*:focus {
+    outline: none !important;
+}
+
+i {
+    font-weight: unset;
+}
+
+* {
+    letter-spacing: 0.15px;
+}
+
+button {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+input {
+    font-size: 0.85rem;
+}
+
+img {
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    width: 100%;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 700;
+}
+
+bdi,
+span,
+strong {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #eaeaea;
+    border-radius: 18px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-color: #aaaaaa;
+    border-radius: 18px;
+}
+
+textarea {
+    border: 0;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    margin: 0 0 2rem 0;
+    min-height: 98px;
+    padding: 1rem 1.2rem;
+    border-radius: $default-radius;
+    position: relative;
+    background: transparent;
+    box-shadow: inset 6px 6px 10px rgba($dark-shadow, 0.25),
+        inset -6px -6px 10px rgba(255, 255, 255, 0.25);
+
+    &.error {
+        padding-bottom: 1.85rem;
+    }
+
+    &:focus {
+        box-shadow: 6px 6px 10px rgba($dark-shadow, 0.25),
+            -6px -6px 10px rgba(255, 255, 255, 0.25);
+    }
+}

@@ -1,10 +1,26 @@
 import axios from "axios";
+import { router } from "../../../router/router";
 
-export const AuthActions = {
+export const actions = {
+    profile({ commit }) {
+        return new Promise((resolve, reject) => {
+            axios
+                .get("/user/profile")
+                .then(response => {
+                    commit("profile", response.data);
+                    resolve(response);
+                })
+                .catch(error => {
+                    // commit("unauthorized");
+                    router.push({ name: "auth.login" });
+                    reject(error);
+                });
+        });
+    },
     register(context, credentials) {
         return new Promise((resolve, reject) => {
             axios
-                .post("/auth/register", credentials)
+                .post("/auth/signup", credentials)
                 .then(response => {
                     resolve(response);
                 })
@@ -13,93 +29,12 @@ export const AuthActions = {
                 });
         });
     },
-    verifyOtpLogin({ commit, dispatch }, credentials) {
-        return new Promise((resolve, reject) => {
-            axios
-                .post("auth/otp/login", credentials)
-                .then(response => {
-                    commit("setToken", response.data);
-                    dispatch("cart/syncCart", null, { root: true });
-                    resolve(response);
-                })
-                .catch(error => {
-                    reject(error);
-                });
-        });
-    },
-    login({ commit, dispatch }, credentials) {
+    login({ commit }, credentials) {
         return new Promise((resolve, reject) => {
             axios
                 .post("auth/login", credentials)
                 .then(response => {
                     commit("setToken", response.data);
-                    dispatch("cart/syncCart", null, { root: true });
-                    resolve(response);
-                })
-                .catch(error => {
-                    reject(error);
-                });
-        });
-    },
-    resendOtp(context, customerId) {
-        return new Promise((resolve, reject) => {
-            axios
-                .post("auth/otp/resend", {
-                    customerId: customerId
-                })
-                .then(response => {
-                    resolve(response);
-                })
-                .catch(error => {
-                    reject(error);
-                });
-        });
-    },
-    retrieveOtp(context, mobile) {
-        return new Promise((resolve, reject) => {
-            axios
-                .post("/auth/checkout/register", {
-                    mobile: mobile
-                })
-                .then(response => {
-                    resolve(response);
-                })
-                .catch(error => {
-                    reject(error);
-                });
-        });
-    },
-    retrievePasswordOtp(context, mobile) {
-        return new Promise((resolve, reject) => {
-            axios
-                .post("/auth/password/otp", {
-                    mobile: mobile
-                })
-                .then(response => {
-                    resolve(response);
-                })
-                .catch(error => {
-                    reject(error);
-                });
-        });
-    },
-    verifyPasswordOtp(context, credentials) {
-        return new Promise((resolve, reject) => {
-            axios
-                .post("auth/password", credentials)
-                .then(response => {
-                    resolve(response);
-                })
-                .catch(error => {
-                    reject(error);
-                });
-        });
-    },
-    resendPasswordOtp(context, details) {
-        return new Promise((resolve, reject) => {
-            axios
-                .post("auth/password/otp/resend", details)
-                .then(response => {
                     resolve(response);
                 })
                 .catch(error => {
@@ -109,5 +44,6 @@ export const AuthActions = {
     },
     logout({ commit }) {
         commit("logout");
+        router.push({ name: "auth.login" });
     }
 };

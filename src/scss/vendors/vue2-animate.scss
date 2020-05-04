@@ -1,0 +1,8 @@
+$animationDuration: 0.25s !default;
+$quoteAnimationNames: false !default;
+
+// Main mixin
+@import "~vue2-animate/src/sass/make-transitions";
+
+// Required Animations
+@import "~vue2-animate/src/sass/animations/fading/all";

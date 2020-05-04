@@ -1,0 +1,12 @@
+@import "./vue.config";
+@import "./abstract/reset";
+@import "./abstract/global";
+@import "./helpers";
+
+@import "~bootstrap/scss/bootstrap-grid";
+
+@import "./vendors/vue2-animate";
+
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts/";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";

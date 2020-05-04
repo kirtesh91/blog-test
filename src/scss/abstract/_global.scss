@@ -1,0 +1,21 @@
+.route-header {
+    padding: 2.5rem 1rem;
+    position: relative;
+    @include flex(flex-start);
+
+    .title {
+        font-weight: normal;
+        @include font-size(20px);
+    }
+
+    &::after {
+        content: "";
+        @include absolute(bottom 0 left 0);
+        @include dimension(100%, 3px);
+        border-radius: 2px;
+        background: transparent;
+
+        box-shadow: 3px 3px 5px rgba(163, 177, 198, 0.55),
+            -3px -3px 5px rgba(255, 255, 255, 0.45);
+    }
+}
